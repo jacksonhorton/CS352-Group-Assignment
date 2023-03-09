@@ -5,39 +5,54 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace Testing
 {
-    public class Hole : UIElement
+    public class Hole
     {
         int position;
-
-        public Hole() 
+        bool fill;
+        public Hole(double X, double Y, Grid g, int pos, bool emp) 
         {
-        }
-        public void drawH(double X, double Y, Grid b)
-        {
+            //make a new ellipse
             Ellipse hole = new Ellipse
             {
                 Tag = "H",
                 Height = 30,
                 Width = 30,
-                Fill = Brushes.Black,
                 
             };
 
             //hole.TranslatePoint(new Point(X, Y), b);
-
+            
+            //set the position of the hole X being horizontal positions and Y being the vertical positions
             hole.Margin = new Thickness(X, Y, 0, 0);
 
 
-            b.Children.Add(hole);
-            b.UpdateLayout();
+            g.Children.Add(hole); //add the new hole as a child of a grid
+            g.UpdateLayout(); //update the visual layout of the grid
 
+            this.position = pos; //number position of the hole, used to help calculate valid moves
+
+            this.fill = emp;
+
+            if (fill == true)
+            {
+                hole.Fill = Brushes.Green;
+            }
+
+            else
+            {
+                hole.Fill = Brushes.Black;
+            }
+
+            
         }
 
+       
 
     }
 
