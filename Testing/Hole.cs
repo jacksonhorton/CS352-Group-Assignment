@@ -15,6 +15,8 @@ namespace Testing
     {
         int position;
         bool fill;
+
+        
         public Hole(double X, double Y, Grid g, int pos, bool emp) 
         {
             //make a new ellipse
@@ -25,8 +27,6 @@ namespace Testing
                 Width = 30,
                 
             };
-
-            //hole.TranslatePoint(new Point(X, Y), b);
             
             //set the position of the hole X being horizontal positions and Y being the vertical positions
             hole.Margin = new Thickness(X, Y, 0, 0);
@@ -39,6 +39,7 @@ namespace Testing
 
             this.fill = emp;
 
+            //if fill is true, place a peg in the hole
             if (fill == true)
             {
                 hole.Fill = Brushes.Green;
